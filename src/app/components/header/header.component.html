@@ -3,22 +3,28 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item" routerLinkActive="active">
+            <li class="nav-item" routerLinkActive="active" *ngIf="isAuthorized">
                 <a class="nav-link" routerLink="/recipes">Recipe</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" *ngIf="!isAuthorized">
+                <a class="nav-link" routerLink="/auth">Authenticate</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" routerLink="/shopping-list">Shopping list</a>
             </li>
         </ul>
         <ul class="navbar-nav navbar-right">
+            <li class="nav-item" *ngIf="isAuthorized">
+                <a class="nav-link" (click)="onLogout()">Logout</a>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" style="cursor: pointer;" id="navbarDropdown" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 55px;">
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Manage
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" style="cursor: pointer;" (click)="saveData()">Save data</a>
-                    <a class="dropdown-item" style="cursor: pointer;" (click)="fetchData()">Fetch data</a>
+                    <a class="dropdown-item" style="cursor: pointer;">Save data</a>
+                    <a class="dropdown-item" style="cursor: pointer;">Fetch data</a>
                 </div>
             </li>
         </ul>

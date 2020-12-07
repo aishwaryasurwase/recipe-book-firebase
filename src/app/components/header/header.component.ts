@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { RecipesService } from '../recipes/recipes.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
     selector: 'app-header',
@@ -7,12 +8,16 @@ import { RecipesService } from '../recipes/recipes.service';
     styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-    constructor(private recipesService: RecipesService) { }
-    saveData() {
-        this.recipesService.saveRecipe();
+    isAuthorized = false;
+
+    constructor(private authService: AuthService, private router: Router) {
+        this.authService.isAuthenticate.subscribe((isAuth) => {
+            this.isAuthorized = isAuth;
+        })
     }
 
-    fetchData() {
-        this.recipesService.fetchRecipe()
+    onLogout() {
+        this.isAuthorized = false;
+        this.router.navigate(['/auth']);
     }
 }

@@ -1,12 +1,14 @@
 <div style='margin-left: 1em; margin-top: 1em' *ngIf="recipe">
     <div class="row col-sm-12">
-        <img [src]='recipe.imagePath' style="max-height: 400px;" alt="{{recipe.name}}" class="img-responsive">
+        <img [src]='recipe.imagePath' style="height: 400px; width: 400px;" alt="{{recipe.name}}" class="img-responsive">
     </div>
+    <br>
     <div class="row">
         <div class="col-sm-12">
             <h4>{{recipe.name}}</h4>
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-sm-12">
             <button class="btn btn-primary dropdown-toggle" role="button" data-toggle="dropdown">Manage Recipe</button>
@@ -24,11 +26,13 @@
 
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-sm-12">
             <p>{{recipe.description}}</p>
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-sm-9">
             <ul class="list-group">
@@ -39,3 +43,6 @@
         </div>
     </div>
 </div>
+<!-- <ng-template #infoText>
+    <p style='margin-left: 1em; margin-top: 1em'>Please select a recipe</p>
+</ng-template> -->
